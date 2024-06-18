@@ -1,5 +1,17 @@
 import { Button } from '@/components/Button';
+import { db } from '@/server/db/db';
+import { Users } from '@/server/db/schema';
 
-export default function Home() {
-    return <Button>Shadcn ui Button</Button>;
-}
+const Home = async () => {
+    const users = await db.select().from(Users);
+    return (
+        <>
+            {users.map((user) => (
+                <div key={user.id}>{user.name}</div>
+            ))}
+            <Button>Shadcn ui Button</Button>
+        </>
+    );
+};
+
+export default Home;
