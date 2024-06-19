@@ -1,15 +1,13 @@
 import { Button } from '@/components/Button';
-import { db } from '@/server/db/db';
-import { Users } from '@/server/db/schema';
+import { SessionProvider, UserInfo } from '@/components/UserInfo';
 
-const Home = async () => {
-    const users = await db.select().from(Users);
+const Home = () => {
     return (
         <>
-            {users.map((user) => (
-                <div key={user.id}>{user.name}</div>
-            ))}
             <Button>Shadcn ui Button</Button>
+            <SessionProvider>
+                <UserInfo />
+            </SessionProvider>
         </>
     );
 };
