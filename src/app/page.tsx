@@ -1,14 +1,11 @@
 import { Button } from '@/components/Button';
-import { SessionProvider, UserInfo } from '@/components/UserInfo';
+import { SessionProvider } from '@/components/UserInfo';
 
 const Home = () => {
     return (
-        <>
+        <SessionProvider>
             <Button>Shadcn ui Button</Button>
-            <SessionProvider>
-                <UserInfo />
-            </SessionProvider>
-        </>
+        </SessionProvider>
     );
 };
 
